@@ -23,7 +23,7 @@ import random
 random.seed(9001)
 from random import randint
 import statistics
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 __author__ = "Théo Ferreira"
 __copyright__ = "Universite Paris Diderot"
@@ -163,13 +163,23 @@ def std(values_list):
 
 def path_average_weight(G, path) :
     weight = 0
-    for i in range(len(path) - 1) : 
-        weight += graph.edges(path[i], path[i+1], ["weight"])
+    for node in range(len(path) - 1) : 
+        weight += graph.edges(path[node], path[node+1], ["weight"])
     return (weight / (len(path) - 1))
 
 
-def remove_paths(G, path_list) : 
-    pass
+def remove_paths(G, path_list, delete_starting_node, delete_sink_node) : 
+    G = G
+    for node in range(len(path_list)) : 
+        # supprime noeuds entre entrée et sortie
+        G.remove_nodes_from(path[node][1:-1])
+        if delete_starting_node == True :
+            G.remove_node(path[node][0])
+        if delete_sink_node == True :
+            G.remove_node(path[node][-1])
+    return G
+
+
 def delete_entry_node() :
     pass
 def select_best_path() : 
