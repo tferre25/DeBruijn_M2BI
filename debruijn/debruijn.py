@@ -289,7 +289,7 @@ def select_best_path(graph, path_list,
     else:
         best_paths = best_paths
 
-    # Random    
+    # Random
     if len(best_paths) > 1:
         best_paths = best_paths[random.randint(0, len(best_paths))]
     path_list.remove(best_paths[0])
